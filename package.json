@@ -22,7 +22,9 @@
     "clean": "ets clean"
   },
   "dependencies": {
+    "@switchdog/egg-graphql": "^3.2.0-beta.4",
     "egg": "^2.6.1",
+    "egg-cors": "^2.2.3",
     "egg-scripts": "^2.6.0"
   },
   "devDependencies": {
@@ -49,7 +51,9 @@
     "type": "git",
     "url": ""
   },
-  "eslintIgnore": ["coverage"],
+  "eslintIgnore": [
+    "coverage"
+  ],
   "author": "limscript",
   "license": "MIT"
 }
