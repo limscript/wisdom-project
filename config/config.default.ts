@@ -55,6 +55,15 @@ export default (appInfo: EggAppInfo) => {
     },
   };
 
+  // sequelize 配置
+  exports.sequelize = {
+    dialect: 'mysql',  // support: mysql, mariadb, postgres, mssql
+    host: '127.0.0.1',
+    port: 3306,
+    database: 'wisdom-project', // /数据库名
+    username: 'root',
+    password: 'limscript',
+  };
   // the return config will combines to EggAppConfig
   return {
     ...config,
