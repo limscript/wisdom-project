@@ -56,7 +56,7 @@ export default (appInfo: EggAppInfo) => {
   };
 
   // sequelize 配置
-  exports.sequelize = {
+  config.sequelize = {
     dialect: 'mysql',  // support: mysql, mariadb, postgres, mssql
     host: '127.0.0.1',
     port: 3306,
