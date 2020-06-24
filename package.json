@@ -27,6 +27,7 @@
     "db:down-all": "npx sequelize db:migrate:undo:all"
   },
   "dependencies": {
+    "@alicloud/pop-core": "^1.7.7",
     "@switchdog/egg-graphql": "^3.2.0-beta.4",
     "egg": "^2.6.1",
     "egg-cors": "^2.2.3",

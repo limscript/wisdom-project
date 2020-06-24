@@ -64,6 +64,19 @@ export default (appInfo: EggAppInfo) => {
     username: 'root',
     password: 'limscript',
   };
+
+  // 阿里云短信插件 配置
+  config.aliyun = {
+    accessKeyId: 'LTAI4G1F2gqepTnbYQTYHbRB',   // 秘钥
+    accessKeySecret: 'jVUAQlOhk9GC3WnUGTNyggIyfPuNDB',   // 秘钥
+    endpoint: 'https://dysmsapi.aliyuncs.com',
+    apiVersion: '2017-05-25',
+    sendSms: {
+      RegionId: 'cn-hangzhou',
+      SignName: '智慧工程',   // 短信签名
+      TemplateCode: 'SMS_193506476', // 短信模板ID
+    },
+  };
   // the return config will combines to EggAppConfig
   return {
     ...config,
