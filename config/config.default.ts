@@ -13,13 +13,13 @@ export default (appInfo: EggAppInfo) => {
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_0408';
 
-  // add your egg config in here
-  config.middleware = ['graphql'];
-
-  // add your special config in here
-  const bizConfig = {
-    sourceUrl: `https://github.com/eggjs/examples/tree/master/${appInfo.name}`,
+  config.oauth = {
+    match: '/graphql',
   };
+
+  // add your egg config in here
+  config.middleware = ['error', 'auth', 'graphql'];
+
   // graphql 配置
   config.graphql = {
     router: '/graphql',
@@ -42,6 +42,44 @@ export default (appInfo: EggAppInfo) => {
     },
   };
 
+  // sequelize 配置
+  config.sequelize = {
+    dialect: 'mysql',  // support: mysql, mariadb, postgres, mssql
+    host: '127.0.0.1',
+    port: 3306,
+    database: 'wisdom-project', // /数据库名
+    username: 'root',
+    password: 'limscript',
+  };
+
+  // redis 配置
+  config.redis = {
+    client: {
+      port: 6379,          // Redis port
+      host: '127.0.0.1',   // Redis host
+      password: '',
+      db: 0
+    },
+  };
+
+  config.bodyParser = {
+    enable: true,
+    jsonLimit: '10mb',
+  };
+
+  // 阿里云短信插件 配置
+  config.aliyun = {
+    accessKeyId: 'LTAI4G1F2gqepTnbYQTYHbRB',   // 秘钥
+    accessKeySecret: 'jVUAQlOhk9GC3WnUGTNyggIyfPuNDB',   // 秘钥
+    endpoint: 'https://dysmsapi.aliyuncs.com',
+    apiVersion: '2017-05-25',
+    sendSms: {
+      RegionId: 'cn-hangzhou',
+      SignName: '智慧工程',   // 短信签名
+      TemplateCode: 'SMS_193506476', // 短信模板ID
+    },
+  };
+
   // CORS 跨域访问配置
   config.cors = {
     origin: '*',
@@ -55,6 +93,16 @@ export default (appInfo: EggAppInfo) => {
     },
   };
 
+  config.view = {
+    mapping: {
+      '.html': 'ejs',
+    },
+  };
+
+  // add your special config in here
+  const bizConfig = {
+    sourceUrl: `https://github.com/eggjs/examples/tree/master/${appInfo.name}`,
+  };
   // the return config will combines to EggAppConfig
   return {
     ...config,
