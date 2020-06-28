@@ -13,13 +13,13 @@ export default (appInfo: EggAppInfo) => {
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_0408';
 
-  // add your egg config in here
-  config.middleware = ['graphql'];
-
-  // add your special config in here
-  const bizConfig = {
-    sourceUrl: `https://github.com/eggjs/examples/tree/master/${appInfo.name}`,
+  config.oauth = {
+    match: '/graphql',
   };
+
+  // add your egg config in here
+  config.middleware = ['error', 'auth', 'graphql'];
+
   // graphql 配置
   config.graphql = {
     router: '/graphql',
@@ -42,19 +42,6 @@ export default (appInfo: EggAppInfo) => {
     },
   };
 
-  // CORS 跨域访问配置
-  config.cors = {
-    origin: '*',
-    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
-  };
-
-  // CSRF 跨站请求伪造配置
-  config.security = {
-    csrf: {
-      ignore: () => true,
-    },
-  };
-
   // sequelize 配置
   config.sequelize = {
     dialect: 'mysql',  // support: mysql, mariadb, postgres, mssql
@@ -63,6 +50,21 @@ export default (appInfo: EggAppInfo) => {
     database: 'wisdom-project', // /数据库名
     username: 'root',
     password: 'limscript',
+  };
+
+  // redis 配置
+  config.redis = {
+    client: {
+      port: 6379,          // Redis port
+      host: '127.0.0.1',   // Redis host
+      password: '',
+      db: 0
+    },
+  };
+
+  config.bodyParser = {
+    enable: true,
+    jsonLimit: '10mb',
   };
 
   // 阿里云短信插件 配置
@@ -76,6 +78,30 @@ export default (appInfo: EggAppInfo) => {
       SignName: '智慧工程',   // 短信签名
       TemplateCode: 'SMS_193506476', // 短信模板ID
     },
+  };
+
+  // CORS 跨域访问配置
+  config.cors = {
+    origin: '*',
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
+  };
+
+  // CSRF 跨站请求伪造配置
+  config.security = {
+    csrf: {
+      ignore: () => true,
+    },
+  };
+
+  config.view = {
+    mapping: {
+      '.html': 'ejs',
+    },
+  };
+
+  // add your special config in here
+  const bizConfig = {
+    sourceUrl: `https://github.com/eggjs/examples/tree/master/${appInfo.name}`,
   };
   // the return config will combines to EggAppConfig
   return {
