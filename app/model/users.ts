@@ -1,7 +1,9 @@
+'use strict';
+
 module.exports = app => {
   const DataTypes = app.Sequelize;
 
-  const Model = app.model.define('users', {
+  const User = app.model.define('users', {
     id: {
       type: DataTypes.INTEGER(11),
       allowNull: true,
@@ -26,12 +28,9 @@ module.exports = app => {
       allowNull: true
     }
   }, {
-    tableName: 'users'
+    tableName: 'users',
+    timestamps: false
   });
 
-  Model.associate = function () {
-
-  }
-
-  return Model;
+  return User;
 };

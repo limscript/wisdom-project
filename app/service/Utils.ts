@@ -4,7 +4,7 @@ import * as Core from "@alicloud/pop-core";
 /**
  * Test Service
  */
-export default class Untils extends Service {
+export default class Utils extends Service {
   /**
    * sayHi to you
    * @param PhoneNumbers - your phone

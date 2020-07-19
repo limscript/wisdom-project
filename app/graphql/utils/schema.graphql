@@ -1,0 +1,6 @@
+type SendSms {
+  Message: String
+  RequestId: String
+  BizId: String
+  Code: String
+}
