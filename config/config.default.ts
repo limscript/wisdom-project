@@ -69,8 +69,8 @@ export default (appInfo: EggAppInfo) => {
 
   // 阿里云短信插件 配置
   config.aliyun = {
-    accessKeyId: 'limLTAI4G1F2gqepTnbYQTYHbRB',   // 秘钥
-    accessKeySecret: 'limjVUAQlOhk9GC3WnUGTNyggIyfPuNDB',   // 秘钥
+    accessKeyId: 'limLTAI4G1F2gqe---pTnbYQTYHbRBroid',   // 秘钥
+    accessKeySecret: 'limjVUAQlOhk9GC---3WnUGTNyggIyfPuNDBroid',   // 秘钥
     endpoint: 'https://dysmsapi.aliyuncs.com',
     apiVersion: '2017-05-25',
     sendSms: {
